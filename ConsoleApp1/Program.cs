@@ -9,7 +9,7 @@ namespace ConsoleApp1
             public int exp = 0;
 
             public Character() {
-                name = "Not assigned";
+                Reset();
             }
             public Character(string name) {
                 this.name = name;
@@ -74,6 +74,12 @@ namespace ConsoleApp1
 
             Paladin knight = new Paladin("Sir Not-Appearing-In-This-Program", huntingBow);
             knight.printStatsInfo();
+
+            //testing external files
+            Adventurer bristolSlayer = new Adventurer("Sir Robin");
+            bristolSlayer.printStatsInfo();
+            Dude westerly = new Dude("Lebowski");
+            westerly.printStatsInfo();
         }
     }
 }
