@@ -14,8 +14,23 @@ namespace ConsoleApp1
             public Character(string name) {
                 this.name = name;
             }
-            public void printStatsInfo(){
+            public virtual void printStatsInfo(){
                 Console.WriteLine($"Hero: {this.name} - {this.exp} EXP");
+            }
+
+            private void Reset()
+            {
+                this.name = "Not assigned";
+                this.exp = 0;
+            }
+        }
+        public class Paladin : Character {
+            public Weapon weapon;
+            public Paladin(string name, Weapon weapon): base(name) {
+                this.weapon = weapon;
+            }
+            public override void printStatsInfo() {
+                Console.WriteLine($"Hail {this.name} - take up your {this.weapon.name}!");
             }
         }
         public struct Weapon {
@@ -25,7 +40,8 @@ namespace ConsoleApp1
                 this.name=name;
                 this.damage=damage;
             }
-            public void printWeaponStats() {
+            public void printWeaponStats()
+            {
                 Console.WriteLine($"Weapon: {this.name} - {this.damage} DMG");
             }
         }
@@ -38,6 +54,7 @@ namespace ConsoleApp1
             heroine.printStatsInfo();
             Weapon huntingBow = new Weapon("Hunting Bow", 105);
             huntingBow.printWeaponStats();
+
             //testing ref types
             Character villain = hero;
             hero.printStatsInfo();
@@ -45,6 +62,7 @@ namespace ConsoleApp1
             villain.name = "Skywalker";
             hero.printStatsInfo();
             villain.printStatsInfo();
+
             //testing val types
             Weapon warBow = huntingBow;
             huntingBow.printWeaponStats();
@@ -54,6 +72,8 @@ namespace ConsoleApp1
             huntingBow.printWeaponStats();
             warBow.printWeaponStats();
 
+            Paladin knight = new Paladin("Sir Not-Appearing-In-This-Program", huntingBow);
+            knight.printStatsInfo();
         }
     }
 }
